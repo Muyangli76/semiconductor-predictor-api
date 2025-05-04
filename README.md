@@ -1,6 +1,6 @@
 # Semiconductor Pass/Fail Prediction API
 
-Project Overview
+Project Overview:
 A FastAPI-based API focuses on predicting the yield type of semiconductor manufacturing processes using a dataset collected from various sensors and process measurement points. The goal is to identify key signals and features that contribute to yield excursions and ultimately improve process throughput, reduce production costs, and shorten time to learning. Feature selection is crucial as the dataset contains both relevant and irrelevant signals, and the task is to build an Artificial Neural Network (ANN) model to predict the yield type.
 
 ## Objectives
@@ -8,6 +8,9 @@ A FastAPI-based API focuses on predicting the yield type of semiconductor manufa
 - Build a machine learning model using an Artificial Neural Network (ANN).
 - Evaluate the model’s performance using the confusion matrix.
 
+--- 
+## Demo
+![image](https://github.com/user-attachments/assets/c594e441-b53e-4e22-a482-1e8ed00d4c33)
 
 ---
 
@@ -65,10 +68,7 @@ The Artificial Neural Network (ANN) model was evaluated based on its ability to 
 ### 3. **K-fold Cross-Validation**
 - **Cross-validation Accuracy**: 98.0% +/- 0.4%, indicating strong reliability and generalization across different data splits.
 
-
-## Demo
-![image](https://github.com/user-attachments/assets/c594e441-b53e-4e22-a482-1e8ed00d4c33)
-API testing on Postman:
+## API testing on Postman:
 ![postman_predicttest](https://github.com/user-attachments/assets/252076fe-ed0c-47b9-bc35-5031112c5cfc)
 
 ## References
