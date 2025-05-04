@@ -4,10 +4,9 @@ Project Overview:
 A FastAPI-based API focuses on predicting the yield type of semiconductor manufacturing processes using a dataset collected from various sensors and process measurement points. The goal is to identify key signals and features that contribute to yield excursions and ultimately improve process throughput, reduce production costs, and shorten time to learning. Feature selection is crucial as the dataset contains both relevant and irrelevant signals, and the task is to build an Artificial Neural Network (ANN) model to predict the yield type.
 
 ## Objectives
-- Preprocess and clean the dataset.
-- Build a machine learning model using an Artificial Neural Network (ANN).
-- Evaluate the model’s performance using the confusion matrix.
-
+- Build and evaluate an ANN model to classify semiconductor manufacturing outcomes  
+- Deploy the trained model using **FastAPI** and test the API endpoints with **Postman**  
+- Demonstrate full-stack machine learning engineering skills from preprocessing to production-ready API
 --- 
 ## Demo
 ![image](https://github.com/user-attachments/assets/c594e441-b53e-4e22-a482-1e8ed00d4c33)
