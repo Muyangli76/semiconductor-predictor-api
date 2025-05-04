@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pass/Fail Prediction for Semiconductor Manufacturing</title>
+    <style>
+        /* Centering the body content */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            background-color: #f4f4f9;
+        }
+
+        /* Adding a container for better alignment */
+        .container {
+            max-width: 800px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 16px;
+            color: #555;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: none;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #predictionResult {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Pass/Fail Prediction for Semiconductor Manufacturing Process</h1>
+
+        <p>
+            A complex modern semiconductor manufacturing process is normally under constant surveillance via the monitoring of signals/variables collected from sensors and or process measurement points. However, not all of these signals are equally valuable in a specific monitoring system. The measured signals contain a combination of useful information, irrelevant information as well as noise. Engineers typically have a much larger number of signals than are actually required. If we consider each type of signal as a feature, then feature selection may be applied to identify the most relevant signals. The Process Engineers may then use these signals to determine key factors contributing to yield excursions downstream in the process. This will enable an increase in process throughput, decreased time to learning, and reduce per-unit production costs. These signals can be used as features to predict the yield type. And by analyzing and trying out different combinations of features, essential signals that are impacting the yield type can be identified.
+        </p>
+        
+        <p><strong>Data Shape:</strong> 1 * 439</p>
+        
+        <p><strong>Prepared by:</strong> Muyang Li</p>
+
+        <label for="dataInput">Please paste your data:</label><br> 
+        <textarea id="dataInput" rows="10" cols="80" placeholder="Paste your data..."></textarea><br>
+        <button onclick="handleInput()">Submit</button>
+
+        <h3>Prediction Result: <span id="predictionResult"></span></h3>
+    </div>
+
+    <script>
+    function handleInput() {
+        const rawData = document.getElementById('dataInput').value;
+        const dataArray = rawData.split(/[,\s]+/).map(Number); // Split by commas or spaces and convert to numbers
+
+        // Send data to the /predict route
+        fetch('/predict', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ features: dataArray })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Server Response:', data);
+            if (data.prediction) {
+                // Display the prediction result
+                document.getElementById('predictionResult').textContent = data.prediction;
+            } else {
+                document.getElementById('predictionResult').textContent = 'Error: ' + data.error;
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+    </script>
+
+</body>
+</html>
